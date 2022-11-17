@@ -1,0 +1,364 @@
+<h1 align="center" class="h1">PθIZON KORMIT</h1>
+<meta charset="utf-8">
+
+<body>
+
+<div class="tab" align="center">
+    <button class="tablinks" id="0" onclick="openTab(event, 'Home')">Home</button>
+    {% if not user.is_authenticated %}
+        <button class="tablinks" id="1" onclick="openTab(event, 'login_register')">login or register</button>
+    {% endif %}
+    {% if user.is_authenticated %}
+        <button class="tablinks" id="1" onclick="openTab(event, 'Make order')">Make order</button>
+        <button class="tablinks" id="2" onclick="openTab(event, 'Account')">Account</button>
+        <button class="tablinks" id="3" onclick="openTab(event, 'Prices')">Prices</button>
+    {% endif %}
+</div>
+
+<div id="Home" class="tabcontent">
+    <h3 class="h3">About us</h3>
+    <p typeof="about">
+        Итак, данный сайт от части реализует его первоначальную идею, а именно, предоставления услуг по выкупу товаров из китая,
+        где мы являемся посредником. Я решил попробовать на django сделать сайт на одном url, типо как Ext js, однако,
+        результат мне не очень то и понравился, это существенно ограничивает вас в разработке. Поэтому я категорически рекомендую не ленится и все распихивать по шаблонам.
+        В идеале еще использовать ajax(для догрузки страниц).
+        Из того что я успел реализовать: Авторизация(посредством crispyforms), создание заказа, просмотр заказов, заполнение личной информации, просмотр личной информации, просмотр цены доставки, просмотр времени доставки (я подключился к уже готовой своей базе на оракл для этого, так что тут я схитрил).
+        Все это работает, но есть некоторые недочеты, которые я не успел исправить, так как мне лень.
+    </p>
+    {# Some more information about us #}
+</div>
+{% if not user.is_authenticated %}
+    <div id="login_register" class="tabcontent">
+        {#        <h3 class="h3">login/register</h3>#}
+        <h2 class="h2"><a href="{% url 'query_creator:login' %}">click to log in</a></h2>
+
+        {#    <p><a href="{% url 'register' %}">register</a></p>#}
+    </div>
+{% endif %}
+{% if user.is_authenticated %}
+    <div id="Make order" class="tabcontent">
+        <h3 class="h3" typeof="order">Enter order information</h3>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ make_order_form }}
+            <input type="submit" value="Submit" class="btn_primary" typeof="order">
+        </form>
+    </div>
+
+    <div id="Account" class="tabcontent">
+
+        <table class="table-account">
+            <tr>
+
+                <td>
+                    <p class="nav-item">
+                        <a typeof="logout" class="nav-link" href="#">Welcome, {{ user.username }}</a>
+                    </p>
+                </td>
+                <td>
+                    {# if address data not past, ask youser past data #}
+                    {# if data past show user his addres and orders#}
+                    <h3 class="h3" typeof="pers-data">Your personal data</h3>
+                </td>
+                <td>
+                    <p class="nav-item">
+                        <a typeof="logout" class="nav-link" href="{% url 'query_creator:logout' %}">Logout</a>
+                    </p>
+                </td>
+
+            </tr>
+        </table>
+
+        {% if user_data_to_show == None %}
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ account_form }}
+                <input type="submit" value="Submit" class="btn_primary">
+            </form>
+        {% else %}
+            {% csrf_token %}
+            {#show user information from user_data_to_show#}
+            {% for data in user_data_to_show %}
+                <p typeof="user-data">{{ data }}</p>
+            {% endfor %}
+        {% endif %}
+
+        {% if orders != None %}
+            <div>
+                <h3 class="h3" typeof="orders">Your orders</h3>
+                <table class="table-account">
+                    <tr>
+                        <th>Order number</th>
+                        <th>Order date</th>
+                        <th>Order status</th>
+                    </tr>
+                    {% for order in orders %}
+                        <tr>
+                            <td>{{ order.id }}</td>
+                            <td>{{ order.date }}</td>
+                            <td>{{ order.status }}</td>
+                        </tr>
+                        <th colspan="3">
+                            Order urls list
+                        </th>
+
+                        <tr>
+                            <td colspan="3">{{ order.urls_list }}</td>
+                        </tr>
+
+                        <tr typeof="span" style="border: transparent">
+                            <td typeof="span" style="border: transparent"></td>
+                        </tr>
+
+
+                    {% endfor %}
+
+
+                </table>
+                {#delete orders#}
+                <form action="" method="post">
+                    {#if button prest set 'delete' == true#}
+                    {% csrf_token %}
+                    {{ delete_order }}
+                    <input type="submit" value="Submit" class="btn_primary">
+                </form>
+            </div>
+        {% endif %}
+    </div>
+    <div id="Prices" class="tabcontent">
+        <h3 class="h3">Count price and time delivery</h3>
+        <div>
+
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ pricing_form }}
+                <input type="submit" value="Submit" class="btn_primary">
+            </form>
+
+        </div>
+        {% if pricing_data != None %}
+            <div>
+                <h3 class="h3">Price and time delivery</h3>
+                <table class="table-account">
+                    <tr>
+                        <th>Price</th>
+                        <th>Time delivery</th>
+                    </tr>
+                    <tr>
+                        <td>{{ pricing_data.price }}</td>
+                        <td>{{ pricing_data.datetime }}</td>
+                    </tr>
+                </table>
+            </div>
+        {% endif %}
+    </div>
+
+{% endif %}
+<script>
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks, id;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+            tablinks[i].style.color = "dimgray";
+            tablinks[i].style.borderBottom = "darkgray";
+        }
+
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+        document.getElementById(tabName).style.display = "block";
+        document.getElementById(tabName).style.borderBottom = "10px solid #000000";
+        document.getElementsByClassName("tablinks")[evt.currentTarget.id].style.color = "#000000";
+        document.getElementsByClassName("tablinks")[evt.currentTarget.id].style.borderBottom = "2px solid #000000";
+
+
+    }
+</script>
+
+</body>
+<style>
+    {# Style the tab #}
+    .h1 {
+        background-color: black;
+        border-radius: 5px 5px 5px 5px;
+        border: black;
+        overflow: hidden;
+        color: white;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .h2 {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    a:link, a:visited {
+        background-color: DarkGray;
+        color: #FFFFFF;
+        padding: 15px 40px;
+        text-align: center;
+        -webkit-transition-duration: 0.4s;
+        transition-duration: 0.4s;
+        text-decoration: none;
+        font-size: 20px;
+        text-align: center;
+        border: black 1px solid;
+        cursor: pointer;
+        display: inline-block;
+        border-radius: 5px 5px 5px 5px;
+
+    }
+
+    a:hover, a:active {
+        background-color: dimgrey;
+    }
+
+
+    .h3 {
+        font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
+    }
+
+    .tab {
+        overflow: hidden;
+        border: 1px solid black;
+        background-color: darkgray;
+        display: ruby-base;
+        width: 70%;
+        margin: 0 auto;
+        border-radius: 2px 2px 2px 2px;
+
+    }
+
+    .tablinks {
+        background-color: transparent;
+        border: 0px solid transparent;
+        border-bottom: darkgray;
+        color: dimgrey;
+        float: none;
+        margin: 20px;
+        font: bold 30px/35px Arial, Helvetica, sans-serif;
+        text-align: center;
+    }
+
+    .tablinks:hover {
+        background-color: #ddd;
+    }
+
+    .tabcontent {
+        display: none;
+        padding: 6px 12px;
+        border: 1px solid #ccc;
+        width: 65%;
+        margin: 0 auto;
+        border-top: none;
+        border-radius: 2px 2px 2px 2px;
+    }
+
+    .btn_primary {
+        background-color: black;
+        border: 1px solid black;
+        color: white;
+        align-content: center;
+        margin: 2px 2px 2px 2px;
+        padding: 5px 5px 5px 5px;
+        border-radius: 2px 2px 2px 2px;
+        font: bold 13px/1.5 Helvetica, Verdana, sans-serif;
+
+
+    }
+
+    p {
+        border-radius: 3px 3px 3px 3px;
+        margin: 2% 20% 2% 20%;
+        font: bold 13px/1.5 Helvetica, Verdana, sans-serif;
+    }
+
+    .form-control {
+        width: 50%;
+        border-radius: 3px 3px 3px 3px;
+        text-align: center;
+        font: bold 13px/1.5 Helvetica, Verdana, sans-serif;
+    }
+
+    form[method="post"] {
+        text-align: center;
+    }
+
+    .h3 {
+        text-align: center;
+        background-color: lightgray;
+        width: 30%;
+        margin: 0 auto;
+        border-radius: 3px 3px 3px 3px;
+    }
+
+    input[type="submit"] {
+        margin: 0 auto;
+        width: 30%;
+        border-radius: 3px 3px 3px 3px;
+    }
+
+    a[typeof="logout"] {
+        background-color: DarkGray;
+        color: #FFFFFF;
+        margin: 0 auto;
+        padding: 1px 1px 1px 1px;
+        width: 100%;
+        text-align: center;
+        -webkit-transition-duration: 0.4s;
+        transition-duration: 0.4s;
+        text-decoration: none;
+        font-size: 15px;
+        border: black 1px solid;
+        cursor: pointer;
+        border-radius: 5px 5px 5px 5px;
+
+    }
+
+    .table-account {
+        table-layout: fixed;
+        width: 100%;
+        border: 1px solid black;
+        border-radius: 3px 3px 3px 3px;
+        font: bold 13px/1.5 Helvetica, Verdana, sans-serif;
+    }
+
+    th {
+        text-underline: black;
+        border: 1px solid black;
+    }
+
+    .h3[typeof="pers-data"] {
+        text-align: center;
+        background-color: lightgray;
+        width: 90%;
+        border-radius: 3px 3px 3px 3px;
+    }
+
+    td {
+        border: 1px solid black;
+        text-align: center;
+        align-content: center;
+    }
+
+    p[typeof="user-data"] {
+        margin: 0 auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+
+        text-align: center;
+        background-color: lightgray;
+        width: 30%;
+        border-radius: 3px 3px 3px 3px;
+    }
+
+    tr[typeof="span"] {
+        height: 80px;
+    }
+</style>

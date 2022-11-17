@@ -1,0 +1,387 @@
+1. Российская Федерация
+
+Russian Federation
+
+2. Центральный федеральный округ
+
+The Central Federal District
+
+3. Белгородская область
+
+Belgorod region
+
+4. Брянская область
+
+Bryansk region
+
+5. Владимирская область
+
+Vladimir region
+
+6. Воронежская область
+
+Voronezh region
+
+7. Ивановская область
+
+Ivanovo region
+
+8. Калужская область
+
+Kaluga region
+
+9. Костромская область
+
+Kostroma region
+
+10. Курская область
+
+Kursk region
+
+11. Липецкая область
+
+Lipetsk region
+
+12. Московская область
+
+Moscow region
+
+13. Орловская область
+
+Oryol region
+
+14. Рязанская область
+
+Ryazan region
+
+15. Смоленская область
+
+Smolensk region
+
+16. Тамбовская область
+
+Tambov region
+
+17. Тверская область
+
+Tver region
+
+18. Тульская область
+
+Tula region
+
+19. Ярославская область
+
+Yaroslavl region
+
+20. г. Москва
+
+The City of Moscow
+
+21. Северо-Западный федеральный округ
+
+The North West Federal Ddistrict
+
+22. Республика Карелия
+
+Republic of Karelia
+
+23. Республика Коми
+
+Republic of Komi
+
+24. Архангельская область
+
+Arkhangelsk region
+
+25. в том числе Ненецкий автономный округ
+
+of which Nenets autonomous area
+
+26. Вологодская область
+
+Vologda region
+
+27. Калининградская область
+
+Kaliningrad region
+
+28. Ленинградская область
+
+Leningrad region
+
+29. Мурманская область
+
+Murmansk region
+
+30. Новгородская область
+
+Novgorod region
+
+31. Псковская область
+
+Pskov region
+
+32. г. Санкт-Петербург
+
+The City of Saint-Petersburg
+
+33. Южный федеральный округ
+
+The South Federal District
+
+34. Республика Адыгея
+
+Republic of Adygeya
+
+35. Республика Дагестан
+
+Republic of Daghestan
+
+36. Республика Ингушетия
+
+Republic of Ingushetia
+
+37.Кабардино-Балкарская Республика
+
+Kabardian-Balkar Republic
+
+38. Республика Калмыкия
+
+Republic of Kalmykia
+
+39. Карачаево-Черкесская Республика
+
+Karachaev-Circassian Republic
+
+40. Республика Северная Осетия - Алания
+
+Republic of North Ossetia -Alania
+
+41. Чеченская Республика
+
+Chechen Republic
+
+42. Краснодарский край
+
+Krasnodar territory
+
+43. Ставропольский край
+
+Stavropol territory
+
+44. Астраханская область
+
+Astrakhan region
+
+45. Волгоградская область
+
+Volgograd region
+
+46. Ростовская область
+
+Rostov region
+
+47. Приволжский федеральный округ
+
+The Privolzhsky (Volga) Federal District
+
+48. Республика Башкортостан
+
+Republic of Bashkortastan
+
+49. Республика Марий Эл
+
+Republic of Mariy El
+
+50. Республика Мордовия
+
+Republic of Mordovia
+
+51. Республика Татарстан
+
+Republic of Tatarstan
+
+52. Удмуртская Республика
+
+Udmurt Republic
+
+53. Чувашская Республика
+
+Chuvash Republic
+
+54. Кировская область
+
+Kirov region
+
+55. Нижегородская область
+
+Nizhny novgorod region
+
+56. Оренбургская область
+
+Orenburg region
+
+57. Пензенская область
+
+Penza region
+
+58. Пермская область
+
+Perm region
+
+59. в том числе Коми-Пермяцкий автономный округ
+
+Komi-Permyatsky autonomous area
+
+60. Самарская область
+
+Samara region
+
+61. Саратовская область
+
+Saratov region
+
+62. Ульяновская область
+
+Ulyanovsk region
+
+63. Уральский федеральный округ
+
+The Ural Federal District
+
+64. Курганская область
+
+Kurgan region
+
+65. Свердловская область
+
+Sverdlovsk region
+
+66. Тюменская область
+
+Tyumen region
+
+67. Ханты-Мансийский автономный округ - Югра
+
+Khanty-Mansi autonomous area - Yugra
+
+68. Ямало-Ненецкий автономный округ
+
+Yamalo-Nenets autonomous area
+
+69. Челябинская область
+
+Chelyabinsk region
+
+70. Сибирский федеральный округ
+
+The Siberian Federal District
+
+71. Республика Алтай
+
+Republic of Altai
+
+72. Республика Бурятия
+
+Republic of Buryatia
+
+73. Республика Тыва
+
+Republic of Tyva
+
+74. Республика Хакасия
+
+Republic of Khakassia
+
+75. Алтайский край
+
+Altai territory
+
+76. Красноярский край
+
+Krasnoyarsk territory
+
+77. Таймырский (Долгано-Ненецкий)автономный округ
+
+Taimyr (Dolgano-Nenets)autonomous area
+
+78. Эвенкийский автономный округ
+
+Evenki autonomous area
+
+79. Иркутская область
+
+Irkutsk region
+
+80. Усть-ОрдынскийБурятский автономный округ
+
+Ust-Ordyn Buryatautonomous area
+
+81. Кемеровская область
+
+Kemerovo region
+
+82. Новосибирская область
+
+Novosibirsk region
+
+83. Омская область
+
+Omsk region
+
+84. Томская область
+
+Tomsk region
+
+85. Читинская область
+
+Chita region
+
+86. в том числе Агинский Бурятскийавтономный округ
+
+of which Aginsky Buryatautonomous area
+
+87. Дальневосточный федеральный округ
+
+The Far East Federal District
+
+88. Республика Саха (Якутия)
+
+Republic of Sakha (Yakutia)
+
+89. Приморский край
+
+Primorsky territory
+
+90. Хабаровский край
+
+Khabarovsk territory
+
+91. Амурская область
+
+Amur region
+
+92. Камчатская область
+
+Kamchatka region
+
+93. Корякский автономный округ
+
+of which Koryak autonomous area
+
+94. Магаданская область
+
+Magadan region
+
+95. Сахалинская область
+
+Sakhalin region
+
+96. Еврейская автономная область
+
+Jewish autonomous region
+
+97. Чукотский автономный округ
+
+Chukotka autonomous area
